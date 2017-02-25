@@ -37,6 +37,15 @@
         'defines': [
           'WIN32'
         ],
+      }],
+      ['OS == "solaris"', {
+        'defines': [
+	  # Solaris and illumos systems are generally strict about symbol
+	  # visibility.  Because we specify "std=c99", we need to use
+	  # __EXTENSIONS__ to get the (non-C99) large file aware versions of
+	  # functions like lstat().
+          '__EXTENSIONS__'
+        ]
       }]
     ],
   },
